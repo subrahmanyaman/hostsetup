@@ -1,0 +1,84 @@
+//
+// Copyright (C) 2020 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+package {
+    // See: http://go/android-license-faq
+    // A large-scale-change added 'default_applicable_licenses' to import
+    // all of the 'license_kinds' from "external_libese_license"
+    // to get the below license kinds:
+    //   SPDX-license-identifier-Apache-2.0
+    default_applicable_licenses: ["external_libese_license"],
+}
+
+cc_binary_host {
+    name: "JavacardKeymintHalTests",
+    defaults: [
+        "cuttlefish_buildhost_only",
+    ],
+    srcs: [
+        //"JavacardKeyMintDevice.cpp",
+        //"JavacardKeyMintOperation.cpp",
+        //"KeyMintUtils.cpp",
+        //"keymint_utils.cpp",
+        "attestation_record.cpp",
+        "authorization_set.cpp",
+        "key_param_output.cpp",
+        "KeyMintAidlTestBase.cpp",
+        //"KeyMintTest.cpp",
+        "VtsRemotelyProvisionedComponentTests.cpp",
+        "remote_prov_utils.cpp",
+        //"ECTest.cpp",
+        //"KeyMintTest.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libkeymaster_portable",
+        "libkeymaster_messages",
+        "libsoft_attestation_cert",
+        "liblog",
+        "libcrypto",
+        "libcutils",
+        "libutils",
+        "libpuresoftkeymasterdevice_host",
+        "libjc_keymint_host",
+        "libcppbor_external",
+        "libjc_keymint_transport_host",
+        "libcppcose_rkp",
+        "libjsoncpp",
+    ],
+    static_libs: [
+        "libcuttlefish_host_config",
+        "libgflags",
+        "libscrypt_static",
+        "libgtest",
+        "libc++_static",
+	"libgmock"
+    ],
+    cflags: [
+        "-Wno-unused-function",
+        "-O0",
+        "-g",
+        "-fno-rtti", // Required for libkeymaster_portable
+    ],
+}
+
+cc_library_headers {
+    name: "libjc_test_headers",
+    vendor_available: true,
+    export_include_dirs: [
+        ".",
+    ],
+    host_supported: true,
+}

@@ -1,0 +1,13 @@
+{
+    "folders": [
+        {
+            "name": "external.libese.apps.seready.keymint",
+            "path": "/usr/local/google/home/pathakc/dev/external/libese/apps/seready/keymint"
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "memory": "cpp"
+        }
+    }
+}
